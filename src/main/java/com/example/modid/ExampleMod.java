@@ -1,4 +1,6 @@
-package io.github.tropheusj.modid;
+package com.example.modid;
+
+import com.simibubi.create.Create;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -13,6 +15,7 @@ public class ExampleMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		LOGGER.info("Create addon mod [{}] loading alongside Create [{}]!", ID, Create.VERSION);
 	}
 
 	public static ResourceLocation id(String path) {

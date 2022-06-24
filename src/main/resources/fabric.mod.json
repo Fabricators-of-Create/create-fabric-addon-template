@@ -5,17 +5,17 @@
   "name": "Example Mod",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
-    "Tropheus Jay"
+    "Me!"
   ],
   "contact": {
-    "sources": "https://github.com/TropheusJ/fabric-example-mod"
+    "sources": "https://github.com/Fabricators-of-Create/create-fabric-addon-template"
   },
-  "license": "MIT",
+  "license": "CC0",
   "icon": "assets/modid/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.tropheusj.modid.ExampleMod"
+      "com.example.modid.ExampleMod"
     ]
   },
   "mixins": [
