@@ -80,10 +80,12 @@ dependencies {
 }
 
 processResources {
+	// require dependencies to be the version compiled against or newer
 	Map<String, String> properties = new HashMap<>()
 	properties.put("version", project.version)
 	properties.put("loader_version", project.loader_version)
 	properties.put("fabric_version", project.fabric_version)
+	properties.put("create_version", project.create_version)
 	properties.put("minecraft_version", project.minecraft_version)
 	properties.put("java_version", sourceCompatibility)
 
