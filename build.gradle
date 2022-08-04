@@ -4,6 +4,7 @@
 plugins {
 	id "fabric-loom" version "0.12-SNAPSHOT"
 	id "io.github.juuxel.loom-quiltflower" version "1.+" // Quiltflower, a better decompiler
+	id "org.quiltmc.quilt-mappings-on-loom" version "4.2.0" // Quilt Mappings, for parameters and javadoc. Also hashed mojmap.
 	id "maven-publish"
 }
 
@@ -29,16 +30,18 @@ repositories {
 	maven { url = "https://maven.cafeteria.dev" } // Fake Player API
 	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
 	maven { url = "https://jitpack.io/" } // Mixin Extras, fabric ASM
+	maven { url = "https://dvs1.progwml6.com/files/maven/" } // JEI
+	maven { url = "https://maven.parchmentmc.org" } // Parchment mappings
 }
 
 dependencies {
 	// dev environment
 	minecraft("com.mojang:minecraft:${project.minecraft_version}")
-	mappings loom.layered {
-		it.officialMojangMappings {
-			setNameSyntheticMembers(false)
-		}
-	}
+	mappings(loom.layered {
+		it.addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${project.minecraft_version}+build.${project.qm_version}:v2"))
+		it.parchment("org.parchmentmc.data:parchment-${project.minecraft_version}:${project.parchment_version}@zip")
+		it.officialMojangMappings { nameSyntheticMembers = false }
+	})
 	modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
 	modLocalRuntime("maven.modrinth:lazydfu:0.1.2") // lazydfu - improves start times
 	modLocalRuntime("maven.modrinth:suggestion-tweaker:${project.suggestion_tweaker_version}") // suggestion tweaker - dev QOL, improves command suggestions
@@ -51,10 +54,13 @@ dependencies {
 	modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}") { transitive = false }
 	modCompileOnly("me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}") { transitive = false }
 	modCompileOnly("dev.emi:emi:${project.emi_version}") { transitive = false }
+	modCompileOnly("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") { transitive = false }
 
 	def recipeViewer = project.recipe_viewer
 	if (recipeViewer == "emi") {
 		modLocalRuntime("dev.emi:emi:${project.emi_version}")  { transitive = false }
+	} else if (recipeViewer == "jei") {
+		deps.modLocalRuntime("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") { transitive = false }
 	} else if (recipeViewer == "rei") {
 		modLocalRuntime("me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}") { transitive = false }
 	} else {
@@ -62,14 +68,14 @@ dependencies {
 	}
 
 	// create setup
-	modImplementation("com.simibubi:Create:${project.create_version}") { transitive = false }
+	modImplementation("com.simibubi.create:create-fabric-${project.minecraft_version}:${project.create_version}") { transitive = false }
 	modImplementation("io.github.fabricators_of_create:Porting-Lib:${project.port_lib_version}+${project.minecraft_version}-dev.${project.port_lib_hash}")
 	modImplementation("me.alphamode:ForgeTags:${project.forge_tags_version}")
 	modImplementation("com.electronwill.night-config:core:${project.night_config_core_version}")
 	modImplementation("com.electronwill.night-config:toml:${project.night_config_toml_version}")
 	modImplementation("curse.maven:forge-config-api-port-fabric-547434:${project.config_api_id}") { transitive = false }
 	modImplementation("com.tterrag.registrate:Registrate:${project.registrate_version}")
-	modImplementation("com.jozufozu.flywheel:Flywheel-Fabric:${project.flywheel_version}")
+	modImplementation("com.jozufozu.flywheel:flywheel-fabric-${flywheel_minecraft_version}:${project.flywheel_version}")
 	modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_entity_attributes_version}")
 	modImplementation("dev.cafeteria:fake-player-api:${project.fake_player_api_version}")
 	modImplementation("io.github.tropheusj:milk-lib:${project.milk_lib_version}")

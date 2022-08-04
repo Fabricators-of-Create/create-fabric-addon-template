@@ -21,7 +21,7 @@ Features of this template mod.
 - GitHub Actions build workflow
 - Quiltflower decompiler through [LoomQuiltflower](https://github.com/Juuxel/LoomQuiltflower) (use `genSourcesWithQuiltflower` instead of `genSources`)
 - LazyDFU, ModMenu, and Suggestion Tweaker to ease development
-- Mojang mappings (Mojmap)
+- Mojang mappings (Mojmap), alongside Quilt Mappings and Parchment for parameters and javadocs.
 - Access to all of Create and its dependencies
   - Porting Lib, Registrate, Flywheel, Forge Config API Port, and more
 
