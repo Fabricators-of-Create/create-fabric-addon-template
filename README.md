@@ -22,6 +22,11 @@ build number metadata and will be compressed by the Machete plugin.
 - Machete Gradle plugin to shrink jar file sizes
 - Developer QOL: Mod Menu, LazyDFU, recipe viewers
 
+## Other Templates
+## Other Templates
+- [Multi-loader template](https://github.com/Fabricators-of-Create/create-multiloader-addon-template)
+- [Fabric-only template](https://github.com/Fabricators-of-Create/create-fabric-addon-template)
+
 ## Help
 Questions? Join us in the #devchat channel of the [Create Discord](https://discord.com/invite/hmaD7Se).
 
