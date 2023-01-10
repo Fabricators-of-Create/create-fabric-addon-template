@@ -23,7 +23,6 @@ build number metadata and will be compressed by the Machete plugin.
 - Developer QOL: Mod Menu, LazyDFU, recipe viewers
 
 ## Other Templates
-## Other Templates
 - [Multi-loader template](https://github.com/Fabricators-of-Create/create-multiloader-addon-template)
 - [Fabric-only template](https://github.com/Fabricators-of-Create/create-fabric-addon-template)
 
