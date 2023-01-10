@@ -5,27 +5,24 @@ This template mod comes pre-configured for developing an addon mod for Create on
 
 ## Setup
 
-For environment setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the
-IDE that you are using.
+This template is an extension of the base [Fabric Example Mod](https://github.com/FabricMC/fabric-example-mod).
+Setup is mostly the same.
 
-Once done, this template needs a bit of setup before it's ready:
-- change entries in the `fabric.mod.json` file
-- rename all instances of `modid` in files and file names with your mod ID,
-a unique identifier for your mod.
-- replace the default icon
-- change your mod package
+Additionally, set `recipe_viewer` in [gradle.properties](gradle.properties). Remember to remove unused
+example code. Make sure versions are up-to-date.
 
-# Features
-Features of this template mod.
-- Create dependency pre-configured
-- GitHub Actions build workflow
-- Quiltflower decompiler through [LoomQuiltflower](https://github.com/Juuxel/LoomQuiltflower) (use `genSourcesWithQuiltflower` instead of `genSources`)
-- LazyDFU, ModMenu, and Suggestion Tweaker to ease development
-- Mojang mappings (Mojmap), alongside Quilt Mappings and Parchment for parameters and javadocs.
-- Access to all of Create and its dependencies
-  - Porting Lib, Registrate, Flywheel, Forge Config API Port, and more
+When you publish your mod, you should use jars provided by GitHub Actions. These jars will have
+build number metadata and will be compressed by the Machete plugin.
 
-# Help
+## Features
+- Access to Create and all of its dependencies
+- Mojang Mappings base, with Quilt Mappings and Parchment providing Javadoc and parameters
+- QuiltFlower decompiler for high quality Minecraft sources: `gradlew genSourcesWithQuiltflower`
+- GitHub Actions automatic build workflow
+- Machete Gradle plugin to shrink jar file sizes
+- Developer QOL: Mod Menu, LazyDFU, recipe viewers
+
+## Help
 Questions? Join us in the #devchat channel of the [Create Discord](https://discord.com/invite/hmaD7Se).
 
 ## License
