@@ -24,7 +24,7 @@ build number metadata and will be compressed by the Machete plugin.
 
 ## Other Templates
 - [Multi-loader template](https://github.com/Fabricators-of-Create/create-multiloader-addon-template)
-- [Fabric-only template](https://github.com/Fabricators-of-Create/create-fabric-addon-template)
+- [Forge-only template](https://github.com/kotakotik22/CreateAddonTemplate)
 
 ## Help
 Questions? Join us in the #devchat channel of the [Create Discord](https://discord.com/invite/hmaD7Se).
