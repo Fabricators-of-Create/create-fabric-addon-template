@@ -17,7 +17,7 @@ build number metadata and will be compressed by the Machete plugin.
 ## Features
 - Access to Create and all of its dependencies
 - Mojang Mappings base, with Quilt Mappings and Parchment providing Javadoc and parameters
-- QuiltFlower decompiler for high quality Minecraft sources: `gradlew genSourcesWithQuiltflower`
+- VineFlower decompiler for high quality Minecraft sources: `gradlew genSourcesWithVineflower`
 - GitHub Actions automatic build workflow
 - Machete Gradle plugin to shrink jar file sizes
 - Developer QOL: Mod Menu, LazyDFU, recipe viewers

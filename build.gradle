@@ -2,8 +2,7 @@
 //file:noinspection GroovyAccessibility
 //file:noinspection GradlePackageVersionRange
 plugins {
-	id "fabric-loom" version "1.0.+"
-	id "io.github.juuxel.loom-quiltflower" version "1.+" // Quiltflower, a better decompiler
+	id "fabric-loom" version "1.5.+"
 	id "io.github.p03w.machete" version "1.+" // automatic jar compressing on build
 	id "maven-publish"
 }
@@ -21,16 +20,22 @@ version = "${mod_version}+${minecraft_version}" + (buildNumber != null ? "-${bui
 
 repositories {
 	maven { url = "https://maven.shedaniel.me/" } // Cloth Config, REI
-	maven { url = "https://dvs1.progwml6.com/files/maven/" } // JEI
+	maven { url = "https://maven.blamejared.com/" } // JEI
 	maven { url = "https://maven.parchmentmc.org" } // Parchment mappings
 	maven { url = "https://maven.quiltmc.org/repository/release" } // Quilt Mappings
 	maven { url = "https://api.modrinth.com/maven" } // LazyDFU
 	maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
 	maven { url = "https://mvn.devos.one/snapshots/" } // Create, Porting Lib, Forge Tags, Milk Lib, Registrate
-	maven { url = "https://cursemaven.com" } // Forge Config API Port
+	maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
 	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
 	maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
 	maven { url = "https://maven.tterrag.com/" } // Flywheel
+}
+
+configurations.configureEach {
+	resolutionStrategy {
+		force("net.fabricmc:fabric-loader:${fabric_loader_version}")
+	}
 }
 
 dependencies {
@@ -72,14 +77,15 @@ dependencies {
 
 processResources {
 	// require dependencies to be the version compiled against or newer
-	Map<String, String> properties = new HashMap<>()
-	properties.put("version", version)
-	properties.put("fabric_loader_version", fabric_loader_version)
-	properties.put("fabric_api_version", fabric_api_version)
-	properties.put("create_version", create_version)
-	properties.put("minecraft_version", minecraft_version)
+	Map<String, String> properties = Map.of(
+			"version", version,
+			"fabric_loader_version", fabric_loader_version,
+			"fabric_api_version", fabric_api_version,
+			"create_version", create_version,
+			"minecraft_version", minecraft_version
+	)
 
-	properties.forEach((k, v) -> inputs.property(k, v))
+	inputs.properties(properties)
 
 	filesMatching("fabric.mod.json") {
 		expand properties
